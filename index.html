@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   
+</head>
+<body>
+
+    <div class="container" style="padding:30px;">
+        <!--v-model example-->
+        <h2 style="color:blue">Example v-model</h2>
+            <div id="example1">
+                <h2>{{ message }}</h2>
+                <input v-model="message" class="form-control">
+            </div>
+<hr>
+        <!--end v-model-->
+    
+        <!--v-show example-->
+            <div id="example2">
+                <h2 style="color:green">Example for v-show {{ message }}</h2>
+                    <textarea v-model="text" class="form-control"></textarea>
+                <br>
+                <button v-show="message" class="btn btn-secondary">Send Message</button>
+            </div>
+        <!--end v-show-->
+<hr>
+        <!--V-if else-->
+            <div id="example3">
+                <h2 v-if="!message" class="text-info">Enter text to send a message</h2>
+                <h2 v-else class="text-success">Click "Send Message" to send</h2>
+                <textarea v-model="message" class="form-control"></textarea>
+                <br>
+                <button v-show="message"  class="btn btn-secondary">Send Message</button>
+            </div>
+        <!--end of v-if else-->
+<hr>
+        <!--v-else-->
+        <div id="example4">
+            <h2>Example v-if-else</h2>
+            <h3 v-if="message == 'one'" class="text-info">You typed 'one' <small>- now try 'two' or 'three'</small></h3>
+            <h3 v-else-if="message == 'two'" class="text-warning">You typed 'two' <small>- now try 'one' or 'three'</small></h3>
+            <h3 v-else-if="message == 'three'" class="text-danger">You typed 'three' <small>- now try 'one' or 'two'</small></h3>
+            <h3 v-else>Type 'one', 'two', or 'three'</h3>
+            <textarea v-model="message" class="form-control"></textarea>
+        </div>
+        <!--end v-else-->
+<hr>
+        <!--v-for-->
+        <div id="example5">
+            <h2>Example of range v-for</h2>
+            <ul class="list-group">
+                <li v-for="num in 5" class="list-group-item">
+                    {{ num }} times 3 equals {{ num * 3}}.
+                </li>
+            </ul>
+        </div>
+        <!--end v-for-->
+<hr>
+        <!--v-on-->
+        <div id="example6">
+                <button class="btn btn-success" v-on:click="addOne">Clicked {{count}} times.</button>
+                <button class="btn btn-warning" v-on:click="resetCount">Reset Count</button>
+            </div>
+        <!--end v-on-->
+<hr>
+        <!--v-text-->
+        <h2 style="color:blueviolet">Example v-click</h2>
+        <div id="example7">
+                <ul class="lead">
+                    <li>Input two numbers</li>
+                    <li>Choose operation symbol</li>
+                    <li>Click on calculate</li>
+                </ul>
+                <form>
+                    <h2><span class="text-info" v-text="num1"></span> {{operator}}
+                        <span class="text-primary" v-text="num2"></span>
+                        <span v-show="result">=</span>
+                        <span class="text-success" v-text="result"></span>
+                    </h2>
+                    <input v-model.number="num1" @click="result = ''" class="form-control col-xs-6">
+                    <select v-model="operator" @click="result = ''" class="form-control col-xs-6">
+                        <option>+</option>
+                        <option>-</option>
+                        <option>*</option>
+                        <option>/</option>
+                    </select>
+                    <input v-model.number="num2" @click="result = ''" class="form-control col-xs-6"><br>
+                    <button type="submit" @click.prevent="calculate" class="btn btn-primary  col-xs-6">Calculate</button>
+                </form>
+            </div>
+        <!--end v-text-->
+        <hr>
+
+        <!--v-bind-->
+            <h2 style="color:cornflowerblue">Example v-bind</h2>
+            <div id="example8">
+                    <card v-bind:carddata="{cardheader: 'https://google.com', cardtitle: 'Google', cardfooter: '@google' }">
+                    </card>
+            </div>
+            <template id="card-template">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ carddata.cardheader }}
+                        </div>
+                        <div class="card-block">
+                            <h4 class="card-title">{{ carddata.cardtitle }}</h4>
+                        </div>
+                        <div class="card-footer">
+                            {{ carddata.cardfooter }}
+                        </div>
+                    </div>
+            </template>
+        <!--end v-bind-->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- <script>
+        new Vue({
+            el: '#example1',
+            data: {
+                message: ""
+            }
+        })
+    </script> -->
+    <!-- <script>
+    new Vue({
+            el: '#example6',
+            // data: {
+            //     message: ""
+            // }
+
+            data: {
+            count: 0
+        },
+ 
+        methods: {
+            addOne: function () {
+ 
+                this.count++;
+            },
+ 
+            resetCount: function () {
+                this.count = 0;
+            }
+        }
+        })
+    </script> -->
+    <!-- <script type="text/javascript">
+        new Vue({
+            el: '#example7',
+            data: {
+                num1: 10,
+                num2: 20,
+                result: 30,
+                operator: "+"
+            },
+            methods: {
+                calculate: function () {
+                    switch (this.operator) {
+                        case "+":
+                            this.result = this.num1 + this.num2;
+                            break;
+                        case "-":
+                            this.result = this.num1 - this.num2;
+                            break;
+                        case "*":
+                            this.result = this.num1 * this.num2;
+                            break;
+                        case "/":
+                            this.result = this.num1 / this.num2;
+                            break;
+                    }
+                }
+            }
+        });
+    </script> -->
+    <script type="text/javascript">
+        Vue.component('card', {
+            props: ['carddata'],
+            template: "#card-template"
+        });
+     
+        new Vue({
+            el: '#example8'
+        })
+    </script>
+</body>
+</html>
