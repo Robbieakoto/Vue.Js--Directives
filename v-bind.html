@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container" style="padding:30px;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                    <h2 style="color:cornflowerblue">Example v-bind</h2>
+                    <div id="example8">
+                            <card v-bind:carddata="{cardheader: 'https://google.com', cardtitle: 'Google', cardfooter: '@google' }">
+                            </card>
+                    </div>
+                    <template id="card-template">
+                            <div class="card">
+                                <div class="card-header">
+                                    {{ carddata.cardheader }}
+                                </div>
+                                <div class="card-block">
+                                    <h4 class="card-title">{{ carddata.cardtitle }}</h4>
+                                </div>
+                                <div class="card-footer">
+                                    {{ carddata.cardfooter }}
+                                </div>
+                            </div>
+                    </template>
+                </div>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        Vue.component('card', {
+            props: ['carddata'],
+            template: "#card-template"
+        });
+     
+        new Vue({
+            el: '#example8'
+        })
+    </script>
+</body>
+</html>

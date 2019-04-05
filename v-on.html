@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+</head>
+<body>
+    <div class="container" style="padding:30px">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-3">
+                <div id="example6" style="padding:10px;">
+                        <button class="btn btn-info" v-on:click="addOne">Clicked {{count}} times.</button>
+                        <button class="btn btn-success" v-on:click="resetCount">Reset Count</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+            <script>
+            new Vue({
+            el: '#example6',
+            // data: {
+            //     message: ""
+            // }
+
+            data: {
+            count: 0
+        },
+ 
+        methods: {
+            addOne: function () {
+ 
+                this.count++;
+            },
+ 
+            resetCount: function () {
+                this.count = 0;
+            }
+        }
+        })
+            </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   
+</head>
+<body>
+    <div class="container" style="padding:30px">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div id="example4">
+                    <h2>Example v-if-else</h2><br>
+                    <h3 v-if="message == 'one'" class="text-info">You typed 'one' <small>- now try 'two' or 'three'</small></h3>
+                    <h3 v-else-if="message == 'two'" class="text-warning">You typed 'two' <small>- now try 'one' or 'three'</small></h3>
+                    <h3 v-else-if="message == 'three'" class="text-danger">You typed 'three' <small>- now try 'one' or 'two'</small></h3>
+                    <h3 v-else>Type 'one', 'two', or 'three'</h3>
+                    <textarea v-model="message" class="form-control"></textarea>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+         new Vue({
+            el: '#example4',
+            data: {
+                message: ""
+            }
+        })
+    </script>
+</body>
